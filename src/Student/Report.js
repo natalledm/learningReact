@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Student } from './Student';
 
 
 // Create a report card component that receives (or show):
@@ -10,43 +11,13 @@ import React, {Component} from 'react';
 
 export class ReportCard extends Component {
     render () {
-        const students = [
-            {
-                id: 1,
-                fullName: 'Alice Smith',
-                marks: { 
-                    math: 8, 
-                    science: 10, 
-                    english: 6, 
-                    social: 5
-                }
-            },
-            {
-                id: 2,
-                fullName: 'John Smith',
-                marks: { 
-                    math: 6, 
-                    science: 4, 
-                    english: 10, 
-                    social: 6
-                }
-            },
-
-        ];
-
+        
+        const {students} = this.props;
 
         const studentsHtml = students.map(student => {
-            const marksTotal = student.marks.math + student.marks.science + student.marks.english + student.marks.social;
             return (
-                <tr class="student">
-                    <td>{ student.id }</td>
-                    <td>{ student.fullName }</td>
-                    <td>{ student.marks.math }</td>
-                    <td>{ student.marks.science }</td>
-                    <td>{ student.marks.english }</td>
-                    <td>{ student.marks.social }</td>
-                    <td>{ marksTotal }</td>
-                </tr>
+                <Student id={student.id} name={student.name} math={student.marks.math} 
+                         science={student.marks.science} english={student.marks.english} social={student.marks.social} />
             );
         });
 
