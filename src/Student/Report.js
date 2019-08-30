@@ -10,6 +10,49 @@ import React, {Component} from 'react';
 
 export class ReportCard extends Component {
     render () {
+        const students = [
+            {
+                id: 1,
+                fullName: 'Alice Smith',
+                marks: { 
+                    math: 8, 
+                    science: 10, 
+                    english: 6, 
+                    social: 5
+                }
+            },
+            {
+                id: 2,
+                fullName: 'John Smith',
+                marks: { 
+                    math: 6, 
+                    science: 4, 
+                    english: 10, 
+                    social: 6
+                }
+            },
+
+        ];
+
+
+        const studentsHtml = students.map(student => {
+            const marksTotal = student.marks.math + student.marks.science + student.marks.english + student.marks.social;
+            return (
+                <tr class="student">
+                    <td>{ student.id }</td>
+                    <td>{ student.fullName }</td>
+                    <td>{ student.marks.math }</td>
+                    <td>{ student.marks.science }</td>
+                    <td>{ student.marks.english }</td>
+                    <td>{ student.marks.social }</td>
+                    <td>{ marksTotal }</td>
+                </tr>
+            );
+        });
+
+
+
+
         return (
             <table>
                 <tr>
@@ -21,24 +64,9 @@ export class ReportCard extends Component {
                     <th>marksSocial</th>
                     <th>total</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Alice Smith</td>
-                    <td>8</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>32</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>John Smith</td>
-                    <td>8</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>32</td>
-                </tr>
+                
+                { studentsHtml }
+
                 <tr>
                     <th>total</th>
                     <td>2</td>
